@@ -52,42 +52,42 @@ export const ProjectAIGenerator = () => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsOpen(false)}
-                            className="absolute inset-0 bg-surface/80 backdrop-blur-md"
+                            className="absolute inset-0 bg-white/80 backdrop-blur-md"
                         />
                         
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-2xl glass-card border-white/10 p-8 sm:p-12 shadow-2xl overflow-hidden"
+                            className="relative w-full max-w-2xl bg-white border border-border p-8 sm:p-12 shadow-2xl rounded-card overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 blur-[100px] rounded-full pointer-events-none" />
                             
-                            <div className="flex items-center justify-between mb-10">
+                            <div className="flex items-center justify-between mb-8">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center">
                                         <Wand2 className="w-6 h-6 text-brand" />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-heading font-display">Project Intel AI</h3>
-                                        <p className="text-[10px] uppercase tracking-[0.3em] text-muted font-black">Professional Narrative Generator</p>
+                                        <h3 className="text-2xl font-bold text-heading font-display italic text-brand">Intel AI.</h3>
+                                        <p className="text-[10px] uppercase tracking-[0.2em] text-muted font-bold">Narrative Engine</p>
                                     </div>
                                 </div>
                                 <button 
                                     onClick={() => setIsOpen(false)}
-                                    className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-white/5 transition-colors text-muted"
+                                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-slate-50 transition-colors text-muted"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
                             </div>
 
-                            <div className="space-y-8">
-                                <div className="space-y-4">
-                                    <label className="text-[11px] font-black uppercase tracking-[0.4em] text-brand ml-1">Project Nucleus</label>
+                            <div className="space-y-6">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-bold uppercase tracking-widest text-brand ml-1">The Nucleus</label>
                                     <textarea 
-                                        className="w-full h-32 px-6 py-5 rounded-input border border-white/5 bg-white/[0.02] focus:border-brand focus:bg-white/[0.04] focus:shadow-glow focus:ring-2 focus:ring-brand focus:ring-offset-4 focus:ring-offset-surface text-white outline-none resize-none transition-all font-medium placeholder:text-muted/40"
-                                        placeholder="e.g., I built a real-time crypto dasboard that uses AI to predict market trends with 90% accuracy..."
+                                        className="w-full h-32 px-6 py-5 rounded-xl border border-border bg-slate-50 focus:border-brand focus:bg-white focus:ring-4 focus:ring-brand/10 text-heading outline-none resize-none transition-all font-medium placeholder:text-muted/40 text-sm"
+                                        placeholder="e.g., I built a real-time crypto dashboard that uses AI..."
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                     />
@@ -96,16 +96,16 @@ export const ProjectAIGenerator = () => {
                                 <button 
                                     disabled={loading || !input.trim()}
                                     onClick={handleGenerate}
-                                    className="btn-primary w-full py-5 text-xs font-black uppercase tracking-[0.4em] disabled:opacity-50 disabled:grayscale transition-all flex items-center justify-center gap-3 focus:ring-2 focus:ring-brand focus:ring-offset-4 focus:ring-offset-surface outline-none"
+                                    className="w-full py-4 text-xs font-bold uppercase tracking-widest bg-brand text-white rounded-xl shadow-lg shadow-brand/20 disabled:opacity-50 disabled:grayscale transition-all flex items-center justify-center gap-3 active:scale-95"
                                 >
                                     {loading ? (
                                         <>
                                             <Loader2 className="w-4 h-4 animate-spin" /> 
-                                            Synthesizing Narrative...
+                                            Synthesizing...
                                         </>
                                     ) : (
                                         <>
-                                            Enhance Project AI <Sparkles className="w-4 h-4" />
+                                            Generate Results <Sparkles className="w-4 h-4" />
                                         </>
                                     )}
                                 </button>
@@ -116,16 +116,16 @@ export const ProjectAIGenerator = () => {
                                             initial={{ opacity: 0, height: 0 }}
                                             animate={{ opacity: 1, height: 'auto' }}
                                             exit={{ opacity: 0, height: 0 }}
-                                            className="space-y-4 pt-8 border-t border-white/5"
+                                            className="space-y-4 pt-6 border-t border-border"
                                         >
-                                            <div className="text-[11px] font-black uppercase tracking-[0.4em] text-muted ml-1">Refined Result</div>
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-muted ml-1">Refined Result</div>
                                             <div className="relative group">
-                                                <div className="w-full px-6 py-6 rounded-input bg-brand/5 border border-brand/20 text-white italic leading-relaxed text-[15px]">
+                                                <div className="w-full px-6 py-6 rounded-xl bg-slate-50 border border-border text-heading italic leading-relaxed text-sm shadow-inner">
                                                     {result}
                                                 </div>
                                                 <button 
                                                     onClick={handleCopy}
-                                                    className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-surface border border-brand/40 flex items-center justify-center shadow-glow text-brand hover:scale-110 active:scale-95 transition-all"
+                                                    className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-white border border-brand/40 flex items-center justify-center shadow-md text-brand hover:scale-110 active:scale-95 transition-all"
                                                     aria-label="Copy to clipboard"
                                                 >
                                                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
