@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  /* Color System - Premium Midnight SaaS Theme */
+  --color-brand: #10B981; /* Emerald Green - High Contrast */
+  --color-brand-hover: #059669; 
+  --color-brand-light: #34D399;
+  --color-accent: #3B82F6; /* Electric Blue */
+  
+  --color-surface: #050505; /* Pure Deep Black */
+  --color-surface-section: #09090B; /* Zinc 950 */
+  --color-surface-card: #18181B; /* Zinc 900 */
+  
+  --color-border: #27272A; /* Zinc 800 */
+  --color-border-hover: #3F3F46; /* Zinc 700 */
+  
+  --color-heading: #FFFFFF; /* Pure White */
+  --color-body: #A1A1AA; /* Zinc 400 */
+  --color-muted: #71717A; /* Zinc 500 */
+  
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* Project Deep-Dive Palette */
+  --color-mint: #D1FAE5; /* Mint Green 100 */
+  --color-mint-dark: #059669; /* Mint Dark 600 */
+  --color-charcoal: #18181B; /* Charcoal (Zinc 900) */
+  --color-charcoal-light: #27272A; /* Light Charcoal */
+
+  /* Spacing System - 8px Grid */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+  --spacing-5xl: 128px;
+
+  /* Radius System */
+  --radius-sm: 8px;
+  --radius-button: 12px;
+  --radius-card: 20px;
+  --radius-input: 12px;
+  --radius-section: 40px;
+
+  /* Shadow System - SaaS Soft Shadows */
+  --shadow-card: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0px 0px 20px rgba(108, 92, 231, 0.3);
+
+  @keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  --animate-gradient-flow: gradient-flow 6s ease infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-body antialiased font-sans selection:bg-brand/20 selection:text-brand scroll-smooth overflow-x-hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Typography Scale - Modern SaaS Scale */
+  h1 { @apply font-display md:text-[64px] text-[40px] leading-[1.1] font-bold text-heading -tracking-[0.03em]; }
+  h2 { @apply font-display md:text-[40px] text-[32px] leading-[1.2] font-bold text-heading -tracking-[0.02em]; }
+  h3 { @apply font-display md:text-[28px] text-[24px] leading-snug font-semibold text-heading tracking-tight; }
+  h4 { @apply font-display md:text-[22px] text-[18px] leading-snug font-semibold text-heading tracking-tight; }
+
+  /* Accessibility: Focus Visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-surface transition-all;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@utility container-custom {
+  @apply max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16;
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.03) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+@utility glass-card {
+  @apply bg-white border border-border rounded-card shadow-card transition-all duration-500 overflow-hidden;
+}
+
+@utility glass-card-hover {
+  @apply hover:border-brand/30 hover:shadow-hover;
+}
+
+@utility mask-fade-out {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+@utility bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-xl);
+}
+
+@utility section-padding {
+  @apply py-24 md:py-32; 
+}
+
+@utility text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-brand via-accent to-brand bg-[length:200%_auto] animate-gradient-flow;
+}
+
+@utility btn-primary {
+  @apply bg-heading text-white transition-all duration-300 font-semibold px-8 py-4 rounded-button shadow-card hover:bg-zinc-800 hover:-translate-y-0.5 active:scale-[0.98] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+}
+
+@utility btn-secondary {
+  @apply bg-white text-heading transition-all duration-300 font-medium px-8 py-4 rounded-button border border-border hover:bg-zinc-50 hover:border-border-hover hover:-translate-y-0.5 active:scale-[0.98] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+}
+
+@utility marquee-content {
+  @apply flex gap-24 whitespace-nowrap animate-[marquee_60s_linear_infinite];
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Texture Overlay - Subtle grain */
+.noise-texture::before {
+  content: "";
+  @apply fixed inset-0 z-[9999] pointer-events-none opacity-[0.02] contrast-150;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-200 rounded-full hover:bg-zinc-300 transition-colors;
+}
